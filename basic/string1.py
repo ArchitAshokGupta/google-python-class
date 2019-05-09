@@ -25,11 +25,11 @@
 # and donuts(23) returns 'Number of donuts: many'
 def donuts(count):
 
-  if count > 0 and count < 10:
-    s = 'Number of donuts: %d' %count
-    
-  elif count >= 10:
+  if count > 9:
     s = 'Number of donuts: many'
+    
+  elif count > 0:
+    s = 'Number of donuts: %d' %count
     
   return s
 
