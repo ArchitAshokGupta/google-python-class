@@ -53,7 +53,7 @@ def front_x(words):
   
   x_list.sort()
   regular_list.sort()
-  sorted_list = x_list+ regular_list
+  sorted_list = x_list + regular_list
 
   return sorted_list
 
