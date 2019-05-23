@@ -46,7 +46,49 @@ import sys
 # Then print_words() and print_top() can just call the utility function.
 
 ###
+def preprocessing_func(filename):
 
+  f = open(filename, 'rU')
+  f = f.read()
+  f = f.lower()
+  f = f.replace('\n', ' ').replace('\r', ' ')
+  list_of_words = f.split()
+
+  unique_list = []
+  dict_of_words_and_counts = {}
+  
+  for word in list_of_words:
+    if word not in unique_list:
+       unique_list.append(word)
+       
+  for word in unique_list:
+    dict_of_words_and_counts[word] = list_of_words.count(word)
+  
+  return dict_of_words_and_counts
+
+
+def last_element(t):
+
+  return t[-1]
+
+
+def print_words(filename):
+  
+  dict_of_words_and_counts = preprocessing_func(filename)
+  
+  for key in sorted(dict_of_words_and_counts.keys()):
+    print key, dict_of_words_and_counts[key]
+    
+    
+def print_top(filename):
+  
+  dict_of_words_and_counts = preprocessing_func(filename)
+  tuples_list = sorted(((value, key) for (key, value) in dict_of_words_and_counts.items()), reverse=True)
+  
+  for tuple in tuples_list[0:20]:
+    print tuple[0], tuple[1]
+  
+  
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
 def main():
